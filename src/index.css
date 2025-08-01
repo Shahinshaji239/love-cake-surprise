@@ -2,41 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Glassmorphism Birthday Theme Design System */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Pastel Background Gradients */
+    --background: 330 40% 96%;
+    --foreground: 340 20% 20%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Glassmorphism Card Colors */
+    --glass-bg: 320 50% 98%;
+    --glass-border: 320 30% 85%;
+    --glass-shadow: 320 20% 80%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Romantic Pastel Palette */
+    --primary: 340 82% 75%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 340 100% 85%;
+    --primary-glow: 340 100% 90%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --secondary: 280 60% 80%;
+    --secondary-foreground: 280 30% 20%;
+    --secondary-light: 280 80% 90%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --accent: 200 70% 80%;
+    --accent-foreground: 200 40% 20%;
+    --accent-light: 200 90% 90%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --heart: 0 70% 70%;
+    --heart-glow: 0 100% 85%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Interactive Elements */
+    --button-glass: 340 60% 85%;
+    --button-hover: 340 80% 80%;
+    --button-glow: 340 100% 90%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Text Colors */
+    --text-primary: 340 40% 25%;
+    --text-secondary: 320 30% 45%;
+    --text-light: 320 20% 60%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Special Effects */
+    --confetti-pink: 340 80% 75%;
+    --confetti-purple: 280 70% 75%;
+    --confetti-blue: 200 70% 75%;
+    --confetti-yellow: 50 90% 75%;
 
-    --radius: 0.5rem;
+    /* Gradients */
+    --gradient-romantic: linear-gradient(135deg, hsl(var(--primary-light)), hsl(var(--secondary-light)));
+    --gradient-glass: linear-gradient(135deg, hsl(var(--glass-bg) / 0.7), hsl(var(--glass-bg) / 0.3));
+    --gradient-button: linear-gradient(135deg, hsl(var(--button-glass)), hsl(var(--primary-light)));
+
+    /* Shadows and Glows */
+    --shadow-glass: 0 8px 32px hsl(var(--glass-shadow) / 0.3);
+    --shadow-glow: 0 0 30px hsl(var(--primary-glow) / 0.5);
+    --shadow-heart: 0 0 20px hsl(var(--heart-glow) / 0.6);
+
+    /* Border Radius */
+    --radius: 1rem;
+    --radius-lg: 1.5rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +124,157 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    background: var(--gradient-romantic);
+    min-height: 100vh;
+    color: hsl(var(--text-primary));
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism Effects */
+  .glass {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--glass-border) / 0.3);
+    box-shadow: var(--shadow-glass);
+  }
+
+  .glass-button {
+    background: var(--gradient-button);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid hsl(var(--button-glass) / 0.4);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-button:hover {
+    background: hsl(var(--button-hover));
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+  }
+
+  /* Heart Animation */
+  .heart-beat {
+    animation: heartbeat 1.5s ease-in-out infinite;
+  }
+
+  .heart-glow {
+    filter: drop-shadow(var(--shadow-heart));
+  }
+
+  /* Floating Animation */
+  .float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .float-delayed {
+    animation: float 3s ease-in-out infinite 1.5s;
+  }
+
+  /* Confetti Animation */
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: hsl(var(--confetti-pink));
+    animation: confetti-fall 3s linear infinite;
+  }
+
+  .confetti:nth-child(2n) {
+    background: hsl(var(--confetti-purple));
+    animation-delay: 0.5s;
+  }
+
+  .confetti:nth-child(3n) {
+    background: hsl(var(--confetti-blue));
+    animation-delay: 1s;
+  }
+
+  .confetti:nth-child(4n) {
+    background: hsl(var(--confetti-yellow));
+    animation-delay: 1.5s;
+  }
+
+  /* Text Glow */
+  .text-glow {
+    text-shadow: 0 0 20px hsl(var(--primary-glow) / 0.8);
+  }
+
+  /* Scale Animation */
+  .scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+
+  .fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  .slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
 }

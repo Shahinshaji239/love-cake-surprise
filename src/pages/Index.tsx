@@ -1,12 +1,34 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import { IntroScreen } from "../components/IntroScreen";
+import { TaskSection } from "../components/TaskSection";
+import { CelebrationScreen } from "../components/CelebrationScreen";
+
+type AppState = 'intro' | 'tasks' | 'celebration';
 
 const Index = () => {
+  const [currentState, setCurrentState] = useState<AppState>('intro');
+
+  const handleStart = () => {
+    setCurrentState('tasks');
+  };
+
+  const handleAllTasksCompleted = () => {
+    setCurrentState('celebration');
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen">
+      {currentState === 'intro' && (
+        <IntroScreen onStart={handleStart} />
+      )}
+      
+      {currentState === 'tasks' && (
+        <TaskSection onAllCompleted={handleAllTasksCompleted} />
+      )}
+      
+      {currentState === 'celebration' && (
+        <CelebrationScreen isVisible={true} />
+      )}
     </div>
   );
 };
