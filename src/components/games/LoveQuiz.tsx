@@ -8,25 +8,39 @@ interface LoveQuizProps {
 
 const questions = [
   {
-    question: "What's our favorite type of date?",
-    options: ["Movie nights at home", "Romantic dinners", "Adventure trips", "All of the above"],
+    question: "What feels like our true way of being together?",
+    options: ["Quiet nights wrapped in love", "Sharing meals made with care", "Exploring the world hand in hand", "Every moment, every way"],
     correct: 3,
-    explanation: "Because every moment with you is perfect! 💕"
+    explanations: {
+      0: "Remember those peaceful evenings when the world felt like it was just ours? Your head on my shoulder, hearts beating in perfect rhythm... 💕",
+      1: "Every meal we share becomes a love letter - the way you smile when I cook for you, how we laugh over burnt toast... these are the moments that make us 'us' 🥰",
+      2: "Hand in hand, we've turned every street into our adventure. From that first walk where we talked for hours to every journey since - you make everywhere feel like home 🌟",
+      3: "Because every way we share love feels like heaven sent - whether it's quiet nights, shared meals, or grand adventures, you make every moment magical ✨"
+    }
   },
   {
-    question: "What do you love most about me?",
-    options: ["Your smile", "Your kindness", "Your sense of humor", "Everything"],
+    question: "What's the most beautiful thing about us?",
+    options: ["The warmth of your smile", "The kindness you bring to my soul", "The laughter that lights up our days", "The way our hearts move as one"],
     correct: 3,
-    explanation: "The feeling is mutual, my love! ❤️"
+    explanations: {
+      0: "Your smile is my sunrise - it lights up not just my day, but my entire world. The way your eyes crinkle when you're truly happy... that's my favorite view 😊",
+      1: "You have this incredible way of making my soul feel safe. Your gentle heart heals parts of me I didn't even know were broken 💖",
+      2: "Our laughter is the soundtrack of our love story. From silly inside jokes to those moments when we can't stop giggling - you make joy feel effortless 😄",
+      3: "This is it - two hearts that found their perfect rhythm. We don't just love each other, we move through life as one beautiful dance 💫"
+    }
   },
   {
-    question: "Our first 'I love you' was:",
-    options: ["Unexpected but perfect", "Long overdue", "Magical", "All of the above"],
+    question: "When our souls first whispered 'I love you,' it felt:",
+    options: ["Like time stood still", "Like the universe had waited for us", "Like pure magic", "All of it and more"],
     correct: 3,
-    explanation: "That moment changed everything for the better! 🌟"
+    explanations: {
+      0: "Remember that perfect pause? The world held its breath while our hearts recognized their home. That moment lives in my heart forever ⏰",
+      1: "It really did feel like every star had aligned just for us. Like the universe had been patiently weaving our paths together all along 🌌",
+      2: "Pure magic doesn't even begin to describe it - it was like watching our souls remember a love that existed before we even met ✨",
+      3: "All of it and more - time stood still while the universe celebrated, magic filled the air, and our hearts finally came home 💖"
+    }
   }
 ];
-
 export const LoveQuiz = ({ onComplete, isCompleted }: LoveQuizProps) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);

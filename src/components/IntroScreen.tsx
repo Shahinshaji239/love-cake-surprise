@@ -1,4 +1,5 @@
 import { Heart } from "lucide-react";
+import { personalConfig } from "../config/personal";
 
 interface IntroScreenProps {
   onStart: () => void;
@@ -17,14 +18,16 @@ export const IntroScreen = ({ onStart }: IntroScreenProps) => {
 
         <div className="mb-8">
           <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4 text-glow">
-            Happy Birthday
+            {personalConfig.messages.intro.title}
           </h1>
           <h2 className="text-3xl md:text-4xl font-light text-secondary mb-6">
-            My Love! 💕
+            {personalConfig.herName}! 💕
           </h2>
           <p className="text-text-secondary text-lg leading-relaxed">
-            I've prepared something special for your 24th birthday.
-            Are you ready for a little adventure filled with love?
+            {personalConfig.birthdayMessage}
+          </p>
+          <p className="text-text-light text-sm mt-4">
+            - {personalConfig.yourName} 💖
           </p>
         </div>
 
@@ -37,7 +40,7 @@ export const IntroScreen = ({ onStart }: IntroScreenProps) => {
 
         <div className="mt-6 opacity-70">
           <p className="text-sm text-text-light">
-            Made with 💖 just for you
+            {personalConfig.messages.intro.signature}
           </p>
         </div>
       </div>

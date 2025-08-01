@@ -47,6 +47,7 @@
     --confetti-purple: 280 70% 75%;
     --confetti-blue: 200 70% 75%;
     --confetti-yellow: 50 90% 75%;
+    --confetti-green: 120 70% 75%;
 
     /* Gradients */
     --gradient-romantic: linear-gradient(135deg, hsl(var(--primary-light)), hsl(var(--secondary-light)));
@@ -198,6 +199,11 @@
     animation-delay: 1.5s;
   }
 
+  .confetti:nth-child(5n) {
+    background: hsl(var(--confetti-green));
+    animation-delay: 2s;
+  }
+
   /* Text Glow */
   .text-glow {
     text-shadow: 0 0 20px hsl(var(--primary-glow) / 0.8);
@@ -214,6 +220,36 @@
 
   .slide-up {
     animation: slideUp 0.6s ease-out forwards;
+  }
+
+  /* Enhanced Celebration Animations */
+  .celebration-glow {
+    animation: celebrationGlow 2s ease-in-out infinite;
+  }
+
+  .image-float {
+    animation: imageFloat 4s ease-in-out infinite;
+  }
+
+  .candle-flicker {
+    animation: candleFlicker 0.5s ease-in-out infinite;
+  }
+
+  .sparkle-twinkle {
+    animation: sparkleTwinkle 1.5s ease-in-out infinite;
+  }
+
+  .birthday-bounce {
+    animation: birthdayBounce 0.6s ease-out;
+  }
+
+  /* Candle Dropping Animation */
+  .candle-falling {
+    animation: candleFall 1s ease-in forwards;
+  }
+
+  .candle-dropped {
+    animation: candleDrop 0.5s ease-out forwards;
   }
 }
 
@@ -275,6 +311,98 @@
   }
   100% {
     transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Enhanced Celebration Animations */
+@keyframes celebrationGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--primary-glow) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(var(--primary-glow) / 0.6);
+  }
+}
+
+@keyframes imageFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(1deg);
+  }
+  75% {
+    transform: translateY(-3px) rotate(-1deg);
+  }
+}
+
+@keyframes candleFlicker {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes sparkleTwinkle {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(180deg);
+  }
+}
+
+@keyframes birthdayBounce {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Candle Dropping Animations */
+@keyframes candleFall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(60vh) rotate(360deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(60vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes candleDrop {
+  0% {
+    transform: translateY(-20px) scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(5px) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
     opacity: 1;
   }
 }
